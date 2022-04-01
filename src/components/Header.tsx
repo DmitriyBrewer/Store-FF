@@ -1,6 +1,6 @@
 import React from 'react';
 import '../App.css'
-import BasketStoreIcon from './BasketStoreIcon';
+import BasketStoreIcon from './icons/BasketStoreIcon';
 import BurgerIcon from './icons/BurgerIcon';
 import FlagSmallIcon from './icons/FlagSmallIcon';
 
