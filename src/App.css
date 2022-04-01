@@ -1,38 +1,239 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap');
+
+body {
+    margin: 0px;
+    padding: 0px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+    background: darkcyan;
+    height: 88px;
+    display: flex;
+    justify-content: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header__content {
+    display: flex;
+    justify-content: space-between;
+    width: 1244px;
+    max-height: 56px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.header__burger {
+    margin-top: 32px;
 }
 
-.App-link {
-  color: #61dafb;
+.header__basket {
+    margin-top: 32px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.delivery {
+    display: flex;
+    justify-content: center;
+}
+
+.delivery__options {
+    display: flex;
+    justify-content: space-between;
+    width: 1244px;
+    background: rgb(185, 185, 185);
+}
+
+.title {
+    font-family: 'Cabin Condensed', sans-serif;
+    font-size: 64px;
+}
+
+.subtitle {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 32px;
+}
+
+.subtitle_small {
+    font-size: 16px;
+}
+
+.subtitle_medium {
+    font-size: 24px;
+}
+
+.subtitle_price {
+   color: #E4002B;
+}
+
+.button-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-menu__content {
+    display: flex;
+    background: #F7F6F5;
+    border-radius: 4px;
+}
+
+.button {
+    width: 146px;
+    height: 48px;
+    border: none;
+    border-radius: 4px;
+    background-color: #F7F6F5;
+    color: #9D9D9D;
+    font-family: 'Abel', sans-serif;
+    font-size: 16px;
+}
+
+.button_active {
+    background-color: #E4002B;
+    color: white;
+}
+
+.button:hover {
+    background-color: #E4002B;
+    color: white;
+}
+
+.adress {
+    display: flex;
+    justify-content: center;
+}
+
+.adress__content {
+    width: 1244px;
+    display: flex;
+}
+
+.adress__pharam {
+    display: flex;
+    align-items: center;
+}
+.adress__input {
+    margin-left: 12px;
+    margin-right: 43px;
+}
+
+.input {
+    width: 210px;
+    height: 42px;
+    background-color: #F7F6F5;
+    border-color: black;
+    border-style: solid;
+    border-radius: 4px;
+    font-family: 'Abel', sans-serif;
+    font-size: 16px;
+}
+
+.category-menu {
+    display: flex;
+    justify-content: center;
+}
+
+.categody-menu__content {
+    display: flex;
+    justify-content: space-between;
+    width: 1244px;
+}
+
+.category-menu__item {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    color: #9D9D9D;
+}
+
+.category-menu__item_active {
+    color: #E4002B;
+}
+
+
+.assortment {
+    display:flex ;
+    justify-content: center;
+}
+
+
+.assortment__content {
+    width: 1244px;
+    display: flex;
+    flex-direction: column;
+    background-color: #F7F6F5;
+}
+
+.assortment__block {
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.assortment__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1px;
+    width: 288px;
+    height: 360px;
+    border-radius: 8px;
+    background-color: #ffffff;
+}
+
+.assortment__image {
+    margin-top: 16px;
+    background-image: url('./source/burgerItem.jpg');
+    background-size:cover;
+    width: 216px;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.assortment__hit-label {
+    display: flex;
+    justify-content: start;
+}
+
+.assortment__amount {
+    display: flex;
+    justify-content: end;
+}
+
+.footer {
+    background-color: rgb(73, 39, 39);
+}
+
+.footer__flag-box {
+    display: flex;
+    justify-content: center;
+}
+
+.footer__flag{
+    width: 1244px;
+    display: flex;
+    justify-content: center;
+}
+
+.footer__content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__item {
+
+}
+
+.footer__info {
+    display: flex;
+    justify-content: space-evenly;
+    color: yellow;
+}
+
+.footer__social {
+
+}
+
+.footer__store {
+    
 }
