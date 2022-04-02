@@ -18,8 +18,6 @@ function App() {
       ]
     }
   ]);
-  const [delivery, setDelivery] = React.useState(true)
-
 
   useEffect(()=>{
     const apiUrl = 'http://localhost:5000/';

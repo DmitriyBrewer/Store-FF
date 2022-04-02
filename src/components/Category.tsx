@@ -10,7 +10,6 @@ interface IProps {
 const Category: React.FC<IProps> = ({arr}) => {
   const [buttonStyle, setButtonStyle] = React.useState('category-menu__item')
 
-
   //'category-menu__item category-menu__item_active'
 
   const clickCategory = () =>{
