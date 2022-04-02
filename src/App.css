@@ -52,9 +52,9 @@ width: 24px;
 height: 24px;
 }
 
-.delivery {
+/* .delivery {
 
-}
+} */
 
 .delivery__block {
     display: flex;
@@ -276,9 +276,9 @@ height: 24px;
     margin-top: 107px;
 }
 
-.footer__item {
+/* .footer__item {
 
-}
+} */
 
 .footer__info {
     display: flex;
@@ -292,13 +292,13 @@ height: 24px;
     background-color: #ffffff;
 }
 
-.footer__social {
+/* .footer__social {
 
 }
 
 .footer__store {
     
-}
+} */
 
 .count-button {
     display: flex;
