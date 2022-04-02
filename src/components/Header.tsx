@@ -3,6 +3,7 @@ import '../App.css'
 import BasketStoreIcon from './icons/BasketStoreIcon';
 import BurgerIcon from './icons/BurgerIcon';
 import FlagSmallIcon from './icons/FlagSmallIcon';
+import RublIcon from './icons/RublIcon';
 
 const Header = () => {
     return <React.Fragment>
@@ -15,7 +16,10 @@ const Header = () => {
         <FlagSmallIcon/>
         </div>
         <div className='header__basket'>
-          727 р 
+          <p className='header__basket-text'>727</p>
+          <div className='header__rubl'>
+           <RublIcon/>
+           </div>
           <BasketStoreIcon/>
         </div>
         </div>
