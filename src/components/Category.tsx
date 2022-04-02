@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import '../App.css'
+import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+
 
 interface IProps {
   arr:any;
@@ -19,13 +21,14 @@ const Category: React.FC<IProps> = ({arr}) => {
        <div className='category-menu'>
         <div className='categody-menu__content'>
           {arr.map((element:any)=>{
-            return <p
+            return <Link spy={true} smooth={true} duration={500} to={element.id}><p
+                key={element.id}
             id={element.id}
             className={buttonStyle}
             onClick={clickCategory}
             >
               {element.name}
-            </p>
+            </p></Link>
           })}
         {/* <p className='category-menu__item category-menu__item_active'>Бургеры</p>
         <p className='category-menu__item'>Твистеры</p>

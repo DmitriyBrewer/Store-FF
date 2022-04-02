@@ -1,7 +1,11 @@
 import React from 'react';
 import '../App.css'
 
-const Delivery = () => {
+interface IProps {
+  arr:any;
+}
+
+const Delivery: React.FC<IProps> = ({arr}) => {
     return <React.Fragment>
        <div className='delivery'>
       <div className='delivery__block'>

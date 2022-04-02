@@ -18,6 +18,7 @@ function App() {
       ]
     }
   ]);
+  const [delivery, setDelivery] = React.useState(true)
 
 
   useEffect(()=>{
@@ -33,7 +34,7 @@ console.log(appState);
   return (
     <React.Fragment>
       <Header/>
-      <Delivery/>
+      <Delivery arr={appState}/>
       <Category  arr={appState}/>
      <Assortiment arr={appState}/>
       <Footer/>

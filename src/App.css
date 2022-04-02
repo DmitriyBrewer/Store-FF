@@ -8,7 +8,6 @@ body {
 }
 
 .header {
-    background: darkcyan;
     height: 88px;
     display: flex;
     justify-content: center;
@@ -66,7 +65,7 @@ height: 24px;
     display: flex;
     justify-content: space-between;
     width: 1244px;
-    background: rgb(185, 185, 185);
+    /* background: rgb(185, 185, 185); */
 }
 
 .title {
@@ -158,13 +157,16 @@ height: 24px;
 .category-menu {
     display: flex;
     justify-content: center;
+    position: sticky;
+    top: 0;
+    background-color: white;
 }
 
 .categody-menu__content {
     display: flex;
     justify-content: space-between;
     width: 1244px;
-    
+
 }
 
 .category-menu__item {
@@ -195,6 +197,7 @@ height: 24px;
     display: flex;
     flex-direction: column;
     background-color: #F7F6F5;
+    padding-top: 20px;
 }
 
 .assortment__block {
