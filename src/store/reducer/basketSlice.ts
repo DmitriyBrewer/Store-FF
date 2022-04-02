@@ -15,7 +15,13 @@ const BASKET = createSlice({
        element.delivery = action.payload
      })
      return state
-   }
+   },
+   activeCategory: (state, action:PayloadAction<any>) => {
+    state.map((element:any)=>{
+      element.activeCategory = action.payload
+    })
+    return state
+  },
   }
 });
 export default BASKET;
