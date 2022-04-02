@@ -6,6 +6,12 @@ import Delivery from './components/Delivery';
 import Category from './components/Category';
 import Assortiment from './components/assortiment/Assortiment';
 import Footer from './components/footer/Footer';
+//redux
+import { useSelector, useDispatch } from "react-redux";
+import BASKET from "./store/reducer/basketSlice";
+import { AppDispatch, AppState, RootState } from "./store/store";
+//redux
+
 
 function App() {
   const [appState, setAppState] = React.useState([
@@ -18,6 +24,12 @@ function App() {
       ]
     }
   ]);
+  //Redux
+  const dispatch: AppDispatch = useDispatch();
+  const Basket = useSelector((state: AppState) => state.basket)
+  console.log(Basket);
+  //Redux
+
 
   useEffect(()=>{
     const apiUrl = 'http://localhost:5000/';
@@ -25,6 +37,7 @@ function App() {
       const allPersons = resp.data;
       setAppState(allPersons);
     });
+    dispatch(BASKET.actions.filterDelivery(false))
   },[setAppState])
 console.log(appState);
 
