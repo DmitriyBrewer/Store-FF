@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css'
 //redux
 import { useSelector, useDispatch } from "react-redux";
-import BASKET from "../store/reducer/basketSlice";
+import COMMON from "../store/reducer/commonSlice";
 import { AppDispatch, AppState, RootState } from "../store/store";
 //redux
 
@@ -13,13 +13,13 @@ interface IProps {
 const Delivery: React.FC<IProps> = ({arr}) => {
   //Redux
   const dispatch: AppDispatch = useDispatch();
-  const Basket = useSelector((state: AppState) => state.basket)
-  console.log(Basket);
+  const Common = useSelector((state: AppState) => state.common)
+  console.log(Common);
   //Redux
   let deliveryCheck = {
     delivery: false
   }
-  Basket.forEach((element:any)=>{
+  Common.forEach((element:any)=>{
     deliveryCheck = {
       delivery: element.delivery
     }
@@ -34,12 +34,12 @@ const Delivery: React.FC<IProps> = ({arr}) => {
       <div className='button-menu__content'>
       <button 
       className={!deliveryCheck.delivery? 'button' : 'button button_active'}
-      onClick={()=>dispatch(BASKET.actions.filterDelivery(true))      
+      onClick={()=>dispatch(COMMON.actions.filterDelivery(true))      
     }
       >Доставка</button>
       <button 
       className={deliveryCheck.delivery? 'button' : 'button button_active'}
-      onClick={()=>dispatch(BASKET.actions.filterDelivery(false))      
+      onClick={()=>dispatch(COMMON.actions.filterDelivery(false))      
       }
       >Самовывоз</button>
       </div>

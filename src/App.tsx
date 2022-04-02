@@ -8,7 +8,7 @@ import Assortiment from './components/assortiment/Assortiment';
 import Footer from './components/footer/Footer';
 //redux
 import { useSelector, useDispatch } from "react-redux";
-import BASKET from "./store/reducer/basketSlice";
+import COMMON from "./store/reducer/commonSlice";
 import { AppDispatch, AppState, RootState } from "./store/store";
 //redux
 
@@ -26,8 +26,8 @@ function App() {
   ]);
   //Redux
   const dispatch: AppDispatch = useDispatch();
-  const Basket = useSelector((state: AppState) => state.basket)
-  console.log(Basket);
+  const Common = useSelector((state: AppState) => state.common)
+  console.log(Common);
   //Redux
 
 
@@ -37,7 +37,7 @@ function App() {
       const allPersons = resp.data;
       setAppState(allPersons);
     });
-    dispatch(BASKET.actions.filterDelivery(false))
+    dispatch(COMMON.actions.filterDelivery(false))
   },[setAppState])
 console.log(appState);
 

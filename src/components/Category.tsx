@@ -3,7 +3,7 @@ import '../App.css'
 import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 //redux
 import { useSelector, useDispatch } from "react-redux";
-import BASKET from "../store/reducer/basketSlice";
+import COMMON from "../store/reducer/commonSlice";
 import { AppDispatch, AppState, RootState } from "../store/store";
 //redux
 
@@ -16,11 +16,11 @@ const Category: React.FC<IProps> = ({arr}) => {
   //'category-menu__item category-menu__item_active'
 //Redux
 const dispatch: AppDispatch = useDispatch();
-const Basket = useSelector((state: AppState) => state.basket)
+const Common = useSelector((state: AppState) => state.common)
 let activeID = {
   activeCategory: ''
 }
-Basket.forEach((element:any)=>{
+Common.forEach((element:any)=>{
   activeID = {
     activeCategory: element.activeCategory
   }
@@ -42,21 +42,13 @@ Basket.forEach((element:any)=>{
             key={element.id}
             id={element.id}
             onClick={()=>{
-              dispatch(BASKET.actions.activeCategory(element.id))
+              dispatch(COMMON.actions.activeCategory(element.id))
             }}
             >
               {element.name}
             </div>
             </Link>
           })}
-        <div className='category-menu__item'>Баскеты</div>
-        <div className='category-menu__item'>Снэки</div>
-        <div className='category-menu__item'>Соусы</div>
-        <div className='category-menu__item'>Напитки</div>
-        <div className='category-menu__item'>Кофе и чай</div>
-        <div className='category-menu__item'>Десерты</div>
-        <div className='category-menu__item'>Хиты по 50</div>
-        <div className='category-menu__item'>Хиты пс</div>
         </div>
       </div>
     </React.Fragment>

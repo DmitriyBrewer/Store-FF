@@ -5,8 +5,8 @@ export interface IHop {
   fetchById:any;
 }
 
-const BASKET = createSlice({
-  name: "basket",
+const COMMON = createSlice({
+  name: "common",
   initialState: [{}] as IHop[],
   reducers: {
    filterDelivery: (state, action:PayloadAction<any> ) => {
@@ -23,4 +23,4 @@ const BASKET = createSlice({
   },
   }
 });
-export default BASKET;
+export default COMMON;

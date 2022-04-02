@@ -4,7 +4,7 @@ import AssortimentItem from './AssortimenItem';
 import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 //redux
 import { useSelector, useDispatch } from "react-redux";
-import BASKET from "../../store/reducer/basketSlice";
+import COMMON from "../../store/reducer/commonSlice";
 import { AppDispatch, AppState, RootState } from "../../store/store";
 //redux
 
@@ -16,13 +16,13 @@ interface IProps {
 const Assortiment: React.FC<IProps> = ({arr}) => {
   //Redux
   const dispatch: AppDispatch = useDispatch();
-  const Basket = useSelector((state: AppState) => state.basket)
+  const Common = useSelector((state: AppState) => state.common)
   //Redux
   // let deliveryCheck = false
   let deliveryCheck = {
     delivery: false
   }
-  Basket.forEach((element:any)=>{
+  Common.forEach((element:any)=>{
     deliveryCheck = {
       delivery: element.delivery
     }

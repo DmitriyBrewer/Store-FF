@@ -1,10 +1,13 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import common from "./reducer/commonSlice";
 import basket from "./reducer/basketSlice";
+
 import { useDispatch } from 'react-redux'
 
 
 const rootReducer = combineReducers({
-  basket: basket.reducer,
+  common: common.reducer,
+  basket: basket.reducer
 });
 
 const store = configureStore({
