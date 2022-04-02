@@ -34,22 +34,9 @@ console.log(appState);
     <React.Fragment>
       <Header/>
       <Delivery/>
-      <Category/>
-      <Assortiment/>
+      <Category  arr={appState}/>
+     <Assortiment arr={appState}/>
       <Footer/>
-      {/* <div>
-        {appState.map((element:any)=>{
-          if (element.name==='Burger') {
-            return <div>{element.products.map((al:any)=>{
-              return <div>{al.name}</div>
-            })}</div>
-        } if (element.name==='Twister') {
-          return <div>{element.products.map((al:any)=>{
-            return <div style={{color:'red'}}>{al.name}{al.img}</div>
-          })}</div>
-        }
-        })}
-      </div> */}
     </React.Fragment>
   );
 }

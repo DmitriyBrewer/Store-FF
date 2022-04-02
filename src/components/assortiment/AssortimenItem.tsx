@@ -6,10 +6,17 @@ import NewIcon from '../icons/NewIcon';
 import RublIconRed from '../icons/RublIconRed';
 import CountButton from './CountButton';
 
-const AssortimentItem = () => {
+interface IProps {
+  Name:string;
+  Coin:string;
+  Image:string;
+}
+
+const AssortimentItem:React.FC<IProps> = ({Name, Coin, Image}) => {
     return <React.Fragment>
           <div className='assortment__item'>
-            <div className='assortment__image'>
+            {/* <div className={'assortment__image assortment___bugrer-image'}> */}
+            <div className={'assortment__image assortment___bugrer-image'}>
               <div className='assortment__hit-label'>
               <HitIcon/>
                   {/* <NewIcon/> */}
@@ -19,8 +26,8 @@ const AssortimentItem = () => {
                   {/* <AddButton/> */}
                   </div>
             </div>
-            <p className='subtitle subtitle_medium'>Бургер</p>
-            <p className='subtitle subtitle_price'>144
+            <p className='subtitle subtitle_medium'>{Name}</p>
+            <p className='subtitle subtitle_price'>{Coin}
             <RublIconRed/>
             </p>
           </div>

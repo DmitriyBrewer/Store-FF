@@ -2,18 +2,24 @@ import React from 'react';
 import '../../App.css'
 import AssortimentItem from './AssortimenItem';
 
-const Assortiment = () => {
-    return <React.Fragment>
-       <div className='assortment'>
-        <div className='assortment__content'>
-          <p className='subtitle'>Бургеры</p>
-          <div className='assortment__block'>
-          <AssortimentItem/>
-          <AssortimentItem/>
+interface IProps {
+  arr:any;
+}
 
-         </div>
+const Assortiment: React.FC<IProps> = ({arr}) => {
+    return <React.Fragment>
+      {arr.map((el:any)=>{
+        return  <div className='assortment'>
+        <div className='assortment__content'>
+          <p className='subtitle'>{el.name}</p>
+          <div className='assortment__block'>
+            {el.products.map((al:any)=>{
+              return <AssortimentItem Name={al.name} Coin={al.price} Image={al.img}/>
+            })}
+          </div>
         </div>
       </div>
+      })}
     </React.Fragment>
 }
 
