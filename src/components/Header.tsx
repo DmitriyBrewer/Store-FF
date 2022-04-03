@@ -6,16 +6,13 @@ import FlagSmallIcon from './icons/FlagSmallIcon';
 import RublIcon from './icons/RublIcon';
 //redux
 import { useSelector, useDispatch } from "react-redux";
-import COMMON from "../store/reducer/commonSlice";
 import BASKET from "../store/reducer/basketSlice";
 import { AppDispatch, AppState, RootState } from "../store/store";
-import { idText } from 'typescript';
 //redux
 
 const Header = () => {
    //Redux
    const dispatch: AppDispatch = useDispatch();
-   const Common = useSelector((state: AppState) => state.common)
    const Basket = useSelector((state: AppState) => state.basket)
    //Redux
    let basketPrice = {

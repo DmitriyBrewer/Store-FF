@@ -36,11 +36,9 @@ const Delivery: React.FC<IProps> = ({arr}) => {
   const streetHandler = (event: any) => {
     dispatch(COMMON.actions.addStreet(event.target.value));
   };
+
   const streetBlurValidation = () => {
     dispatch(COMMON.actions.streetValidation());
-    //
-    // dispatch(HOPS.actions.checkingErrorWort());
-    //
   }
 
   const houseHandler = (event: any) => {
@@ -82,7 +80,8 @@ const Delivery: React.FC<IProps> = ({arr}) => {
           onChange={streetHandler}
           onBlur={streetBlurValidation}
           />
-          <div className='adress__tooltip' style={{display: !deliveryCheck.streetValidation?'flex':'none'}}>Пример валидации по наличию любого символа</div>
+          <div className='adress__tooltip' 
+          style={{display: !deliveryCheck.streetValidation?'flex':'none'}}>Пример валидации по наличию любого символа</div>
           </span>
         </div>
         <div className='adress__pharam'>
@@ -93,7 +92,8 @@ const Delivery: React.FC<IProps> = ({arr}) => {
           onChange={houseHandler}
           onBlur={houseBlurValidation}
           />
-          <div className='adress__tooltip' style={{display: !deliveryCheck.houseValidation?'flex':'none'}}>Пример валидации по наличию любого символа</div>
+          <div className='adress__tooltip' 
+          style={{display: !deliveryCheck.houseValidation?'flex':'none'}}>Пример валидации по наличию любого символа</div>
           </span>
         </div>
         </div>

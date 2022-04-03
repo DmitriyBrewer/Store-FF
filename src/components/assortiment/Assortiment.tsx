@@ -4,7 +4,6 @@ import AssortimentItem from './AssortimenItem';
 import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 //redux
 import { useSelector, useDispatch } from "react-redux";
-import COMMON from "../../store/reducer/commonSlice";
 import BASKET from "../../store/reducer/basketSlice";
 import { AppDispatch, AppState, RootState } from "../../store/store";
 //redux
@@ -45,54 +44,71 @@ const Assortiment: React.FC<IProps> = ({arr}) => {
         <div className='assortment__content'>
           <p className='subtitle'>{el.name}</p>
           <div className='assortment__block'>
-            {/* {el.products.map((al:any)=>{
-                  return <AssortimentItem Name={al.name} Coin={al.price} Image={al.img}/>
-            })} */}
-            {el.products.map((al:any)=>{
+            {el.products.map((item:any)=>{
               if(deliveryCheck.delivery === true) {
-                if (al.delivery === true) {
-                  return <AssortimentItem Name={al.name} Coin={al.price} Image={al.img} 
-                  // onClickAdd={()=>{
-                  //   dispatch(BASKET.actions.addItem({name:al.name, id: al.id, price: al.price, delivery: al.delivery, img: al.img, amount: 1 }))
-                  // }}
-                  // onClickDelete={()=>{
-                  //   dispatch(BASKET.actions.MinusItem(al.id))
-                  // }}
-                  />
-                }
-              } if (deliveryCheck.delivery === false) {
+                if (item.delivery === true) {
                 return <AssortimentItem 
-                Name={al.name} 
-                Coin={al.price} 
-                Image={al.img}
-                ID={al.id}
-                selectedItem={()=>{
-                  dispatch(BASKET.actions.selectedItem(al.id))
-                }}
+                Name={item.name} 
+                Coin={item.price} 
+                Image={item.img}
+                ID={item.id}
                 onClickAdd={()=>{
-                  dispatch(BASKET.actions.addItem({name:al.name, id: al.id, price: parseInt(al.price), amountPrice:parseInt(al.price), delivery: al.delivery, img: al.img, amount: 1 }))
+                  dispatch(BASKET.actions.addItem({name:item.name, id: item.id, price: parseInt(item.price), amountPrice:parseInt(item.price), delivery: item.delivery, img: item.img, amount: 1 }))
 
                   dispatch(BASKET.actions.reducePrice())
 
                   dispatch(BASKET.actions.changeButton())
 
-                  dispatch(BASKET.actions.selectedItem(al.id))
+                  dispatch(BASKET.actions.selectedItem(item.id))
                 }}
 
                 onClickDelete={()=>{
-                  dispatch(BASKET.actions.MinusItem(al.id))
-                    dispatch(BASKET.actions.deleteItem(al.id))
+                  dispatch(BASKET.actions.MinusItem(item.id))
+                    dispatch(BASKET.actions.deleteItem(item.id))
                     dispatch(BASKET.actions.reducePrice())
                     dispatch(BASKET.actions.changeButton())
-                    dispatch(BASKET.actions.selectedItem(al.id))
+                    dispatch(BASKET.actions.selectedItem(item.id))
                 }}
 
                 onClickPlus={()=>{
-                  dispatch(BASKET.actions.PlusItem(al.id))
+                  dispatch(BASKET.actions.PlusItem(item.id))
                   dispatch(BASKET.actions.reducePrice())
-                  dispatch(BASKET.actions.selectedItem(al.id))
+                  dispatch(BASKET.actions.selectedItem(item.id))
                 }}
-                changeButton = {activeID.activeCategory}
+                  
+                  />
+                }
+              } 
+              
+              if (deliveryCheck.delivery === false) {
+                return <AssortimentItem 
+                Name={item.name} 
+                Coin={item.price} 
+                Image={item.img}
+                ID={item.id}
+                onClickAdd={()=>{
+                  dispatch(BASKET.actions.addItem({name:item.name, id: item.id, price: parseInt(item.price), amountPrice:parseInt(item.price), delivery: item.delivery, img: item.img, amount: 1 }))
+
+                  dispatch(BASKET.actions.reducePrice())
+
+                  dispatch(BASKET.actions.changeButton())
+
+                  dispatch(BASKET.actions.selectedItem(item.id))
+                }}
+
+                onClickDelete={()=>{
+                  dispatch(BASKET.actions.MinusItem(item.id))
+                    dispatch(BASKET.actions.deleteItem(item.id))
+                    dispatch(BASKET.actions.reducePrice())
+                    dispatch(BASKET.actions.changeButton())
+                    dispatch(BASKET.actions.selectedItem(item.id))
+                }}
+
+                onClickPlus={()=>{
+                  dispatch(BASKET.actions.PlusItem(item.id))
+                  dispatch(BASKET.actions.reducePrice())
+                  dispatch(BASKET.actions.selectedItem(item.id))
+                }}
                 />
               }
             })}
