@@ -7,9 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import COMMON from "../../store/reducer/commonSlice";
 import BASKET from "../../store/reducer/basketSlice";
 import { AppDispatch, AppState, RootState } from "../../store/store";
-import { idText } from 'typescript';
 //redux
-
 interface IProps {
   arr:any;
 }
@@ -54,12 +52,12 @@ const Assortiment: React.FC<IProps> = ({arr}) => {
               if(deliveryCheck.delivery === true) {
                 if (al.delivery === true) {
                   return <AssortimentItem Name={al.name} Coin={al.price} Image={al.img} 
-                  onClickAdd={()=>{
-                    dispatch(BASKET.actions.addItem({name:al.name, id: al.id, price: al.price, delivery: al.delivery, img: al.img, amount: 1 }))
-                  }}
-                  onClickDelete={()=>{
-                    dispatch(BASKET.actions.MinusItem(al.id))
-                  }}
+                  // onClickAdd={()=>{
+                  //   dispatch(BASKET.actions.addItem({name:al.name, id: al.id, price: al.price, delivery: al.delivery, img: al.img, amount: 1 }))
+                  // }}
+                  // onClickDelete={()=>{
+                  //   dispatch(BASKET.actions.MinusItem(al.id))
+                  // }}
                   />
                 }
               } if (deliveryCheck.delivery === false) {
@@ -68,26 +66,33 @@ const Assortiment: React.FC<IProps> = ({arr}) => {
                 Coin={al.price} 
                 Image={al.img}
                 ID={al.id}
-
+                selectedItem={()=>{
+                  dispatch(BASKET.actions.selectedItem(al.id))
+                }}
                 onClickAdd={()=>{
-                  dispatch(BASKET.actions.addItem({name:al.name, id: al.id, price: parseInt(al.price),amountPrice:parseInt(al.price), delivery: al.delivery, img: al.img, amount: 1 }))
+                  dispatch(BASKET.actions.addItem({name:al.name, id: al.id, price: parseInt(al.price), amountPrice:parseInt(al.price), delivery: al.delivery, img: al.img, amount: 1 }))
 
-                  dispatch(BASKET.actions.reducePrice(1))
+                  dispatch(BASKET.actions.reducePrice())
+
+                  dispatch(BASKET.actions.changeButton())
+
+                  dispatch(BASKET.actions.selectedItem(al.id))
                 }}
 
                 onClickDelete={()=>{
                   dispatch(BASKET.actions.MinusItem(al.id))
                     dispatch(BASKET.actions.deleteItem(al.id))
-                    dispatch(BASKET.actions.reducePrice(1))
+                    dispatch(BASKET.actions.reducePrice())
+                    dispatch(BASKET.actions.changeButton())
+                    dispatch(BASKET.actions.selectedItem(al.id))
                 }}
 
                 onClickPlus={()=>{
                   dispatch(BASKET.actions.PlusItem(al.id))
-                  dispatch(BASKET.actions.reducePrice(1))
-
+                  dispatch(BASKET.actions.reducePrice())
+                  dispatch(BASKET.actions.selectedItem(al.id))
                 }}
                 changeButton = {activeID.activeCategory}
-                
                 />
               }
             })}

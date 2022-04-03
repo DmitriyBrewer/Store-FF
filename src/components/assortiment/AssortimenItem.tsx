@@ -16,15 +16,17 @@ interface IProps {
   Name:string;
   Coin:string;
   Image:string;
+  Amount?:string;
   changeButton?: any;
-  onClickAdd:()=>void;
-  onClickDelete:()=>void;
+  onClickAdd?:()=>void;
+  onClickDelete?:()=>void;
   onClickPlus?:()=>void;
   ID?:any;
+  selectedItem?:any
 
 }
 
-const AssortimentItem:React.FC<IProps> = ({Name, Coin, Image, onClickAdd,onClickDelete, changeButton,onClickPlus, ID}) => {
+const AssortimentItem:React.FC<IProps> = ({Name, Coin, Image, onClickAdd,onClickDelete, changeButton,onClickPlus, ID, selectedItem}) => {
   //Redux
   const dispatch: AppDispatch = useDispatch();
   const Common = useSelector((state: AppState) => state.common)
@@ -34,13 +36,15 @@ const AssortimentItem:React.FC<IProps> = ({Name, Coin, Image, onClickAdd,onClick
   let amountCheck = {
     amount: null,
     id: 0,
-    name:''
+    name:'',
+    changeButton: undefined
   }
   Basket.forEach((element:any)=>{
     amountCheck = {
       amount: element.amount,
       id: element.id ,
-      name: element.name
+      name: element.name, 
+      changeButton: element.changeButton
     }
   })
    
@@ -51,10 +55,20 @@ const AssortimentItem:React.FC<IProps> = ({Name, Coin, Image, onClickAdd,onClick
               <HitIcon/>
                   {/* <NewIcon/> */}
                   </div>
-              <div className='assortment__amount'>
-                  {ID === amountCheck.id&& Name === amountCheck.name && amountCheck.amount !== 0? <CountButton onClickDelete={onClickDelete } onClickPlus={onClickPlus}/> : <div onClick={onClickAdd} style={{cursor:'pointer'}}>
-                    <AddButton/> 
-                  </div>}
+                  <div
+                  className='assortment__amount'>
+                    {ID ? amountCheck.changeButton && ID === amountCheck.id&&Name===amountCheck.name?
+                    <CountButton 
+                    Name={Name}
+                    ID={ID}
+                    onClickDelete={onClickDelete } onClickPlus={onClickPlus}/>
+                    :
+                    <div onClick={onClickAdd}><AddButton/></div>
+                    :
+                    <div>sd</div>
+                    }
+                    
+                    
                   </div>
             </div>
             <p className='subtitle subtitle_medium'>{Name}</p>

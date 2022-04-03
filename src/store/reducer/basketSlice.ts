@@ -5,6 +5,7 @@ export interface IBasket {
   fetchById:any;
   amount:number;
   amountPrice:any;
+  changeButton:any;
 }
 
 const BASKET = createSlice({
@@ -15,12 +16,11 @@ const BASKET = createSlice({
         state.push(action.payload)
    },
    activeCategory:(state, action:PayloadAction<any>) => {
-    state.map((element:any)=>{
-      if(action.payload === element.id) {
-        element.activeCategory = true
-      } else element.activeCategory = false
+    state.map((el:any)=>{
+      if (el.amount&&el.changeButton&&el.id===action.payload&&el.name===el.img) {
+        el.activeCategory = true
+      }
     })
-    return state
    },
   //  deleteItem: (state, action: PayloadAction<any>) => {
   //   return state.filter((element: any) => 
@@ -31,7 +31,8 @@ const BASKET = createSlice({
   },
   MinusItem: (state, action: PayloadAction<any>) => {
      state.map((element:any)=>{
-       if(element.id === action.payload && element.amount > 0) {
+      element.selectedItem = action.payload
+       if(element.id === element.selectedItem && element.amount > 0) {
           element.amount -= 1
           element.amountPrice = element.price * element.amount
        }
@@ -40,19 +41,15 @@ const BASKET = createSlice({
   },
   PlusItem: (state, action: PayloadAction<any>) => {
     state.map((element:any)=>{
-      if(element.id === action.payload) {
+      element.selectedItem = action.payload
+      if(element.id === element.selectedItem && element.changeButton) {
        element.amount += 1
        element.amountPrice = element.price * element.amount
       }
     })
     return state
  },
- reducePrice: (state, action: PayloadAction<any>) => {
-  //  state.map((el:any)=>{
-  //   //  el.basket = 150
-  //   el.basket = 150
-    
-  //  })
+ reducePrice: (state) => {
 
   var initialValue = 0;
   let sum = state.reduce(
@@ -63,12 +60,27 @@ const BASKET = createSlice({
       el.basket = sum
   })
  },
+ changeButton: (state) => {
+   state.map((el:any)=>{
+     if (el.amount >= 1) {
+       el.changeButton = true
+     }if (el.amount === 0) {
+      el.changeButton = false
+     }
+   })
+   return state
+ },
  sendBasket: (state) => {
-  // return state.filter((el:any)=>el)
-
 for (let i=0;i<state.length;i++)state.splice(i)
 return state
 }, 
+selectedItem: (state, action: PayloadAction<any>) => {
+  state.map((element: any) => {
+    element.selectedItem = action.payload
+  } 
+  )
+  return state;
+},
   }
 });
 export default BASKET;

@@ -32,8 +32,7 @@ const Delivery: React.FC<IProps> = ({arr}) => {
     houseValidation: element.houseValidation
     }
   })
-  console.log(Common)
-
+  
   const streetHandler = (event: any) => {
     dispatch(COMMON.actions.addStreet(event.target.value));
   };
