@@ -16,13 +16,40 @@ const Delivery: React.FC<IProps> = ({arr}) => {
   const Common = useSelector((state: AppState) => state.common)
   //Redux
   let deliveryCheck = {
-    delivery: false
+    delivery: false,
+    street: '',
+    house: '',
+    streetValidation: false,
+    houseValidation: false
+
   }
   Common.forEach((element:any)=>{
     deliveryCheck = {
-      delivery: element.delivery
+      delivery: element.delivery,
+      street: element.street,
+      house: element.house,
+      streetValidation: element.streetValidation,
+    houseValidation: element.houseValidation
     }
   })
+  console.log(Common)
+
+  const streetHandler = (event: any) => {
+    dispatch(COMMON.actions.addStreet(event.target.value));
+  };
+  const streetBlurValidation = () => {
+    dispatch(COMMON.actions.streetValidation());
+    //
+    // dispatch(HOPS.actions.checkingErrorWort());
+    //
+  }
+
+  const houseHandler = (event: any) => {
+    dispatch(COMMON.actions.addHouse(event.target.value));
+  };
+  const houseBlurValidation = () => {
+    dispatch(COMMON.actions.houseValidation());
+  }
 
     return <React.Fragment>
        <div className='delivery'>
@@ -51,13 +78,23 @@ const Delivery: React.FC<IProps> = ({arr}) => {
         <div className='adress__pharam'>
           <p className='subtitle'>Улица</p>
           <span className='adress__input'>
-          <input className='input' type="text" name="" id="" placeholder='Остоженка'/>
+          <input className='input' type="text" name="" id="" placeholder='Остоженка'
+          value={deliveryCheck.street}
+          onChange={streetHandler}
+          onBlur={streetBlurValidation}
+          />
+          <div className='adress__tooltip' style={{display: !deliveryCheck.streetValidation?'flex':'none'}}>Пример валидации по наличию любого символа</div>
           </span>
         </div>
         <div className='adress__pharam'>
           <p className='subtitle'>Дом</p>
           <span className='adress__input'>
-          <input className='input' type="text" name="" id="" placeholder='Остоженка'/>
+          <input className='input' type="text" name="" id="" placeholder='Остоженка'
+          value={deliveryCheck.house}
+          onChange={houseHandler}
+          onBlur={houseBlurValidation}
+          />
+          <div className='adress__tooltip' style={{display: !deliveryCheck.houseValidation?'flex':'none'}}>Пример валидации по наличию любого символа</div>
           </span>
         </div>
         </div>
