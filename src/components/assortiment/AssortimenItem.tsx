@@ -52,8 +52,9 @@ const AssortimentItem:React.FC<IProps> = ({Name, Coin, Image, onClickAdd,onClick
                     ID={ID}
                     onClickDelete={onClickDelete } onClickPlus={onClickPlus}/>
                     :
-                    <div onClick={onClickAdd}><AddButton/></div>
-                    }
+                    <div 
+                    onClick={onClickAdd}><AddButton/></div>
+                    }                               
                   </div>
             </div>
             <p className='subtitle subtitle_medium'>{Name}</p>

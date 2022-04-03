@@ -14,6 +14,7 @@ const BASKET = createSlice({
   reducers: {
    addItem: (state, action:PayloadAction<any>) => {
         state.push(action.payload)
+        return state;
    },
    activeCategory:(state, action:PayloadAction<any>) => {
     state.map((el:any)=>{
