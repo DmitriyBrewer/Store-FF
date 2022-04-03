@@ -9,6 +9,7 @@ import Footer from './components/footer/Footer';
 //redux
 import { useSelector, useDispatch } from "react-redux";
 import COMMON from "./store/reducer/commonSlice";
+import BASKET from "./store/reducer/basketSlice";
 import { AppDispatch, AppState, RootState } from "./store/store";
 //redux
 
@@ -27,7 +28,9 @@ function App() {
   //Redux
   const dispatch: AppDispatch = useDispatch();
   const Common = useSelector((state: AppState) => state.common)
-  console.log(Common);
+  const Basket = useSelector((state: AppState) => state.basket)
+  // console.log(Common);
+  console.log(Basket);
   //Redux
 
 
@@ -39,7 +42,7 @@ function App() {
     });
     dispatch(COMMON.actions.filterDelivery(false))
   },[setAppState])
-console.log(appState);
+// console.log(appState);
 
   
   return (

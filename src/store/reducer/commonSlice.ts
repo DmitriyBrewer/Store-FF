@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 
-export interface IHop {
+export interface ICommon {
   addCase:any;
   fetchById:any;
 }
 
 const COMMON = createSlice({
   name: "common",
-  initialState: [{}] as IHop[],
+  initialState: [{}] as ICommon[],
   reducers: {
    filterDelivery: (state, action:PayloadAction<any> ) => {
      state.map((element:any)=>{

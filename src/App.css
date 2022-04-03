@@ -227,7 +227,12 @@ height: 24px;
     width: 288px;
     height: 360px;
     border-radius: 8px;
+    background-color: #fafafa;
+}
+
+.assortment__item:hover {
     background-color: #ffffff;
+   
 }
 
 .assortment__image {

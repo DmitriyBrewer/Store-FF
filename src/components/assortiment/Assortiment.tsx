@@ -5,7 +5,9 @@ import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } f
 //redux
 import { useSelector, useDispatch } from "react-redux";
 import COMMON from "../../store/reducer/commonSlice";
+import BASKET from "../../store/reducer/basketSlice";
 import { AppDispatch, AppState, RootState } from "../../store/store";
+import { idText } from 'typescript';
 //redux
 
 interface IProps {
@@ -17,6 +19,7 @@ const Assortiment: React.FC<IProps> = ({arr}) => {
   //Redux
   const dispatch: AppDispatch = useDispatch();
   const Common = useSelector((state: AppState) => state.common)
+  const Basket = useSelector((state: AppState) => state.basket)
   //Redux
   // let deliveryCheck = false
   let deliveryCheck = {
@@ -25,6 +28,15 @@ const Assortiment: React.FC<IProps> = ({arr}) => {
   Common.forEach((element:any)=>{
     deliveryCheck = {
       delivery: element.delivery
+    }
+  })
+
+  let activeID = {
+    activeCategory: ''
+  }
+  Basket.forEach((element:any)=>{
+    activeID = {
+      activeCategory: element.activeCategory
     }
   })
 
@@ -41,10 +53,42 @@ const Assortiment: React.FC<IProps> = ({arr}) => {
             {el.products.map((al:any)=>{
               if(deliveryCheck.delivery === true) {
                 if (al.delivery === true) {
-                  return <AssortimentItem Name={al.name} Coin={al.price} Image={al.img}/>
+                  return <AssortimentItem Name={al.name} Coin={al.price} Image={al.img} 
+                  onClickAdd={()=>{
+                    dispatch(BASKET.actions.addItem({name:al.name, id: al.id, price: al.price, delivery: al.delivery, img: al.img, amount: 1 }))
+                  }}
+                  onClickDelete={()=>{
+                    dispatch(BASKET.actions.MinusItem(al.id))
+                  }}
+                  />
                 }
               } if (deliveryCheck.delivery === false) {
-                return <AssortimentItem Name={al.name} Coin={al.price} Image={al.img}/>
+                return <AssortimentItem 
+                Name={al.name} 
+                Coin={al.price} 
+                Image={al.img}
+                ID={al.id}
+
+                onClickAdd={()=>{
+                  dispatch(BASKET.actions.addItem({name:al.name, id: al.id, price: parseInt(al.price),amountPrice:parseInt(al.price), delivery: al.delivery, img: al.img, amount: 1 }))
+
+                  dispatch(BASKET.actions.reducePrice(1))
+                }}
+
+                onClickDelete={()=>{
+                  dispatch(BASKET.actions.MinusItem(al.id))
+                    dispatch(BASKET.actions.deleteItem(al.id))
+                    dispatch(BASKET.actions.reducePrice(1))
+                }}
+
+                onClickPlus={()=>{
+                  dispatch(BASKET.actions.PlusItem(al.id))
+                  dispatch(BASKET.actions.reducePrice(1))
+
+                }}
+                changeButton = {activeID.activeCategory}
+                
+                />
               }
             })}
           </div> 

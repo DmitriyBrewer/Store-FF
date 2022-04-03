@@ -14,7 +14,6 @@ const Delivery: React.FC<IProps> = ({arr}) => {
   //Redux
   const dispatch: AppDispatch = useDispatch();
   const Common = useSelector((state: AppState) => state.common)
-  console.log(Common);
   //Redux
   let deliveryCheck = {
     delivery: false
